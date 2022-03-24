@@ -24,6 +24,7 @@ ghosts = [
     [vector(-180, -160), vector(0, 5)],
     [vector(100, 160), vector(0, -5)],
     [vector(100, -160), vector(-5, 0)],
+    [vector(-180, 160), vector(5,0)],
 ]
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -131,7 +132,7 @@ def move():
                 vector(5, 0),
                 vector(-5, 0),
                 vector(0, 5),
-                vector(0, -5),
+                vector(0, -5)
             ]
             plan = choice(options)
             course.x = plan.x
