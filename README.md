@@ -6,12 +6,12 @@
 
 Cambios realizados dentro de los juegos, el número indica el cambio realizado por cada persona
 
-paint
+paint:
 1.Creación función circulo
 2.Creación función rectangulo
 3.Creación función triangulo
 
-pacman
+pacman:
 1.Nuevo fantasma
 2.Cambio velocidad fantasmas
 3.Cambio origen pacman
