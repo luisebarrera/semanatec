@@ -19,4 +19,4 @@ pacman
 snake:
 1.
 2.Cambio velocidad serpiente
-3.
+3.El juego no termina al contacto con el borde
