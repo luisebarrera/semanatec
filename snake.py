@@ -13,54 +13,98 @@ from turtle import *
 from random import randrange
 from freegames import square, vector
 
-food = vector(0, 0)
-snake = [vector(10, 0)]
-aim = vector(0, -10)
+isStarted = False
+snake = [[10, 0]]
+aim = [0, 0]
+food = [60, 60]
+interval = 100
 
 def change(x, y):
-    "Change snake direction."
-    aim.x = x
-    aim.y = y
+  global isStarted # need this line to avoid error
+  if not isStarted:
+    isStarted = True
+  aim[0] = x
+  aim[1] = y
+
+def draw_square(x, y, size, name):
+  up()
+  goto(x, y)
+  down()
+  color(name)
+  begin_fill()
+
+  for count in range(4):
+    forward(size)
+    left(90)
+
+  end_fill()
+
+def draw_bounding_box():
+  up()
+  goto(-200, -200)
+  down()
+  color('black')
+  for count in range(4):
+    forward(400)
+    left(90)
+
 
 def inside(head):
-    "Return True if head inside boundaries."
-    return -200 < head.x < 190 and -200 < head.y < 190
+    return -200 < head[0] < 190 and -200 < head[1] < 190
 
 def move():
-    "Move snake forward one segment."
-    head = snake[-1].copy()
-    head.move(aim)
-
-    if not inside(head) or head in snake:
-        square(head.x, head.y, 9, 'red')
-        update()
-        return
-
-    snake.append(head)
-
+  if isStarted:
+    head = [snake[-1][0] + aim[0], snake[-1][1] + aim[1]]
+    
+    if head[0] > 190:
+      head[0] = -200
+    elif head[0] < -200:
+      head[0] = 190
+    elif head[1] > 190:
+      head[1] = -200
+    elif head[1] < -200:
+      head[1] = 190
+  
+    if head in snake:
+      draw_square(head[0], head[1], 9, 'red')
+      up()
+      goto(0, 0)
+      write("Game Over", align="center", font=("Arial", 14, "bold"))
+      update()
+      return
+    
     if head == food:
-        print('Snake:', len(snake))
-        food.x = randrange(-15, 15) * 10
-        food.y = randrange(-15, 15) * 10
+      food[0] = randrange(-15, 15) * 10
+      food[1] = randrange(-15, 15) * 10
+      global interval
+      interval -= 5
     else:
-        snake.pop(0)
+      snake.pop(0)
+      
+    snake.append(head)
+    
+  clear()
+  
+  draw_bounding_box()
+  
+  draw_square(food[0], food[1], 9, 'green')
+  
+  for body in snake:
+    draw_square(body[0], body[1], 9, 'black')
 
-    clear()
+  update()
+  Screen().ontimer(move, interval)
 
-    for body in snake:
-        square(body.x, body.y, 9, 'black')
-
-    square(food.x, food.y, 9, 'green')
-    update()
-    ontimer(move, 100)
-
-setup(420, 420, 370, 0)
+Screen().setup(420, 420, 370, 0)
 hideturtle()
-tracer(False)
-listen()
-onkey(lambda: change(10, 0), 'Right')
-onkey(lambda: change(-10, 0), 'Left')
-onkey(lambda: change(0, 10), 'Up')
-onkey(lambda: change(0, -10), 'Down')
+Screen().tracer(0, 0)
+
+Screen().listen()
+Screen().onkey(lambda: change(10, 0), 'Right')
+Screen().onkey(lambda: change(-10, 0), 'Left')
+Screen().onkey(lambda: change(0, 10), 'Up')
+Screen().onkey(lambda: change(0, -10), 'Down')
+
 move()
+
 done()
