@@ -9,8 +9,8 @@ Exercises
 
 """
 
-import math
 import turtle
+from math import hypot
 from turtle import *
 from freegames import vector
 
@@ -41,10 +41,9 @@ def circle(start, end):
     down()
     begin_fill()
 
-    circle(math.hypot(end.x - start.x, end.y - start.y))
+    turtle.circle(hypot(end.x - start.x, end.y - start.y))
     
     end_fill()
-    pass  # TODO
 
 def rectangle(start, end):
     
