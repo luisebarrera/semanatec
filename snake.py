@@ -51,8 +51,16 @@ def move():
 
     if head == food:
         print('Snake:', len(snake))
-        food.x = randrange(-15, 15) * 10
-        food.y = randrange(-15, 15) * 10
+
+        if len(snake) > 0 and len(snake) < 10:
+            food.x = randrange(-15, 15) * 10
+            food.y = randrange(-15, 15) * 10
+        elif len(snake) >= 10 and len(snake) < 20:
+            food.x = randrange(-10, 10) * 10
+            food.y = randrange(-10, 10) * 10
+        elif len(snake) >= 20:
+            food.x = randrange(-5, 5) * 10
+            food.y = randrange(-5, 5) * 10
     else:
         snake.pop(0)
 
