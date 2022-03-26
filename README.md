@@ -1,5 +1,10 @@
 # semanatec
 
+Para este proyecto, utilizamos juegos ya creados dentro de python para modificarlos y utilizar tanto git como github desde la terminal de la computadora, por lo que se necesitará instalar python y git para probar los siguientes juegos:
+
+Python: https://www.python.org/downloads/
+Git: https://git-scm.com/downloads
+
 1.Mauricio Tumalán Castillo A01369288
 2.Luis Emilio Barrera A01368759
 3.Elias Yañez A01028482
