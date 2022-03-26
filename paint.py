@@ -1,19 +1,16 @@
-"""Paint, for drawing shapes.
-
-Exercises
-1. Add a color.
-2. Complete circle.
-3. Complete rectangle.
-4. Complete triangle.
-5. Add width parameter.
-
+"""
+1.Mauricio Tumalán Castillo A01369288
+2.Luis Emilio Barrera A01368759
+3.Elias Yañez A01028482
 """
 
+#Se importan funciones necesarias de librerías preestablecidas
 import turtle
 from math import hypot
 from turtle import *
 from freegames import vector
 
+#Crear linea
 def line(start, end):
     "Draw line from start to end."
     up()
@@ -21,6 +18,7 @@ def line(start, end):
     down()
     goto(end.x, end.y)
 
+#Crear cuadrado
 def square(start, end):
     "Draw square from start to end."
     up()
@@ -34,6 +32,7 @@ def square(start, end):
 
     end_fill()
 
+#Crear circulo
 def circle(start, end):
     "Draw circle from start to end."
     up()
@@ -45,6 +44,7 @@ def circle(start, end):
     
     end_fill()
 
+#Crear rectangulo
 def rectangle(start, end):
     
     begin_fill()    
@@ -60,6 +60,7 @@ def rectangle(start, end):
 
     pass  # TODO
 
+#Crear triangulo
 def triangle(start, end):
     "Draw triangle from start to end."
     up()
@@ -73,6 +74,7 @@ def triangle(start, end):
 
     end_fill()
 
+#Guardado de punto de inicio del dibujado de alguna de las figuras de arriba
 def tap(x, y):
     "Store starting point or draw shape."
     start = state['start']
@@ -85,14 +87,17 @@ def tap(x, y):
         shape(start, end)
         state['start'] = None
 
+#guarda el valor de la tecla presionada
 def store(key, value):
     "Store value in state at key."
     state[key] = value
 
+#inicialización del programa y llamado de las funciones creadas arriba
 state = {'start': None, 'shape': line}
 setup(420, 420, 370, 0)
 onscreenclick(tap)
 listen()
+#valores establecidos para cambiar opciones dentro del juego
 onkey(undo, 'u')
 onkey(lambda: color('black'), 'K')
 onkey(lambda: color('white'), 'W')

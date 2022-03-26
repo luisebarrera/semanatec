@@ -1,32 +1,30 @@
-"""Snake, classic arcade game.
-
-Exercises
-
-1. How do you make the snake faster or slower?
-2. How can you make the snake go around the edges?
-3. How would you move the food?
-4. Change the snake to respond to arrow keys.
-
 """
-
+1.Mauricio Tumalán Castillo A01369288
+2.Luis Emilio Barrera A01368759
+3.Elias Yañez A01028482
+"""
+#Se importan funciones de librerias preestablecidas dentro de python
 from turtle import *
 from random import randrange
 from freegames import square, vector
 
+#Se inicializan variables que se utilizarán posteriormente
 food = vector(0,0)
 snake = [vector(10, 0)]
 aim = vector(0,-10)
 
-
+#Cambio de dirección de serpiente
 def change(x, y):
     "Change snake direction."
     aim.x = x
     aim.y = y
 
+#Se verifica que la cabeza entre dentro del tablero
 def inside(head):
     "Return True if head inside boundaries."
     return -200 < head.x < 190 and -200 < head.y < 190
 
+#Movimiento
 def move():
     "Move snake forward one segment"
     head = snake[-1].copy()
@@ -48,10 +46,11 @@ def move():
     
     snake.append(head)
       
-
+    #Se alarga la serpiente si come fruta y se añade puntaje
     if head == food:
         print('Snake:', len(snake))
-
+        
+        #Se cambia el spawn de fruta acorde al puntaje preestablecido
         if len(snake) > 0 and len(snake) < 10:
             food.x = randrange(-15, 15) * 10
             food.y = randrange(-15, 15) * 10
@@ -66,9 +65,11 @@ def move():
 
     clear()
 
+    #Dibujo de snake
     for body in snake:
         square(body.x, body.y, 9, 'black')
 
+    #Dibujo de fruta
     square(food.x, food.y, 9, 'green')
     update()
     ontimer(move, 50)

@@ -1,23 +1,21 @@
-"""Pacman, classic arcade game.
-
-Exercises
-
-1. Change the board.
-2. Change the number of ghosts.
-3. Change where pacman starts.
-4. Make the ghosts faster/slower.
-5. Make the ghosts smarter.
-
 """
+1.Mauricio Tumalán Castillo A01369288
+2.Luis Emilio Barrera A01368759
+3.Elias Yañez A01028482
+"""
+
+#Se importan las funciones especificas que se necesitarán en cada librería
 
 from random import choice
 from turtle import *
 from freegames import floor, vector
 
+#Se inicializan las variables que harán que funcione el juego
 state = {'score': 0}
 path = Turtle(visible=False)
 writer = Turtle(visible=False)
 aim = vector(5, 0)
+#Se crea el pacman y los fantasmas
 pacman = vector(-120, -80)
 ghosts = [
     [vector(-180, 160), vector(5, 0)],
@@ -25,7 +23,9 @@ ghosts = [
     [vector(100, 160), vector(0, -5)],
     [vector(100, -160), vector(-5, 0)],
     [vector(50, 80), vector(5,0)],
-] ##added new ghost
+] #Se hizo un cambio al código y se añadió un nuevo fantasma
+
+#Se crea el tablero
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
@@ -49,6 +49,7 @@ tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ]
 
+#Se comienza a dibujar el tablero
 def square(x, y):
     "Draw square using path at (x, y)."
     path.up()
@@ -83,6 +84,7 @@ def valid(point):
 
     return point.x % 20 == 0 or point.y % 20 == 0
 
+#Se dibuja el mundo
 def world():
     "Draw world using path."
     bgcolor('black')
@@ -100,7 +102,7 @@ def world():
                 path.up()
                 path.goto(x + 10, y + 10)
                 path.dot(2, 'white')
-
+#movimiento de pacman y fantasmas
 def move():
     "Move pacman and all ghosts."
     writer.undo()
@@ -150,12 +152,14 @@ def move():
 
     ontimer(move, 100)
 
+#Cambio de direcciones de pacman
 def change(x, y):
     "Change pacman aim if valid."
     if valid(pacman + vector(x, y)):
         aim.x = x
         aim.y = y
 
+#Se inicializan los marcadores de puntaje y se especifica que hacer con las flechas
 setup(420, 420, 370, 0)
 hideturtle()
 tracer(False)
