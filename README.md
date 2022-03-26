@@ -5,6 +5,8 @@ Para este proyecto, utilizamos juegos ya creados dentro de python para modificar
 Python: https://www.python.org/downloads/
 Git: https://git-scm.com/downloads
 
+Link video: https://drive.google.com/file/d/1VlO1JfY0uKkwp4OScHyU9ws6iZy5X9gD/view?usp=sharing
+
 1.Mauricio Tumalán Castillo A01369288
 2.Luis Emilio Barrera A01368759
 3.Elias Yañez A01028482
