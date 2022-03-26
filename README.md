@@ -22,6 +22,6 @@ pacman:
 3.Cambio origen pacman
 
 snake:
-1.Se cambia el spawn de frutas dependiendo de tu puntaje
-2.Cambio velocidad inicial serpiente
+1.Cambio spawn de fruta acorde a puntaje obtenido
+2.Cambio velocidad inicial de serpiente
 3.El juego no termina al contacto con el borde
