@@ -17,11 +17,11 @@ food = vector(0,0)
 snake = [vector(10, 0)]
 aim = vector(0,-10)
 
+
 def change(x, y):
     "Change snake direction."
     aim.x = x
     aim.y = y
-
 
 def inside(head):
     "Return True if head inside boundaries."
@@ -48,7 +48,7 @@ def move():
     
     snake.append(head)
       
-    
+
     if head == food:
         print('Snake:', len(snake))
         food.x = randrange(-15, 15) * 10
